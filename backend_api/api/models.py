@@ -31,3 +31,26 @@ def save_user_profile(sender, instance, **kwargs):
 
 post_save.connect(create_user_profile, sender=User)
 post_save.connect(save_user_profile, sender=User)
+
+
+# backend_api/api/models.py
+
+
+class ImpromptuTopic(models.Model):
+    topic = models.CharField(max_length=255)
+
+class ExtempTopic(models.Model):
+    topic = models.CharField(max_length=255)
+    is_current_event = models.BooleanField(default=True)
+
+class CXSim(models.Model):
+    case = models.TextField()
+    response = models.TextField()
+    critique = models.TextField()
+
+class ArgumentAnalysis(models.Model):
+    case = models.TextField()
+    feedback = models.TextField()
+    counterarguments = models.TextField()
+    improvements = models.TextField()
+    weaknesses = models.TextField()

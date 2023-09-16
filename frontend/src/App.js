@@ -1,31 +1,26 @@
-import React from 'react'
+// frontend/src/App.js
 
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import PrivateRoute from "./utils/PrivateRoute"
-import { AuthProvider } from './context/AuthContext'
-
-import Homepage from './views/Homepage'
-import Registerpage from './views/Registerpage'
-import Loginpage from './views/Loginpage'
-import Dashboard from './views/Dashboard'
-import Navbar from './views/Navbar'
-
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './views/Navbar';  // Make sure to import Navbar here
+import Generator from './views/Generator';
+import CXSim from './views/CXSim';
+import ArgumentAnalysis from './views/ArgumentAnalysis';
 
 function App() {
   return (
     <Router>
-      <AuthProvider>
-        < Navbar/>
+      <div className="App">
+        <Navbar />  {/* Include the Navbar component */}
         <Switch>
-          <PrivateRoute component={Dashboard} path="/dashboard" exact />
-          <Route component={Loginpage} path="/login" />
-          <Route component={Registerpage} path="/register" exact />
-          <Route component={Homepage} path="/" exact />
+          <Route path="/generator" component={Generator} />
+          <Route path="/cxsim" component={CXSim} />
+          <Route path="/analysis" component={ArgumentAnalysis} />
+          {/* Add more routes as needed */}
         </Switch>
-      </AuthProvider>
+      </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

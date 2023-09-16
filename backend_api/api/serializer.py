@@ -4,6 +4,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from .models import ImpromptuTopic, ExtempTopic, CXSim, ArgumentAnalysis
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -53,3 +54,15 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+    
+
+    # backend_api/api/serializer.py
+
+
+
+class ImpromptuTopicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImpromptuTopic
+        fields = '__all__'
+
+# ... (similar serializers for other models)

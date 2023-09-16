@@ -11,6 +11,9 @@ from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework import viewsets
+from .models import ImpromptuTopic, ExtempTopic, CXSim, ArgumentAnalysis
+from .serializer import ImpromptuTopicSerializer, ExtempTopicSerializer, CXSimSerializer, ArgumentAnalysisSerializer
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -45,3 +48,13 @@ def testEndPoint(request):
         data = f'Congratulation your API just responded to POST request with text: {text}'
         return Response({'response': data}, status=status.HTTP_200_OK)
     return Response({}, status.HTTP_400_BAD_REQUEST)
+
+# backend_api/api/views.py
+
+
+
+class ImpromptuTopicViewSet(viewsets.ModelViewSet):
+    queryset = ImpromptuTopic.objects.all()
+    serializer_class = ImpromptuTopicSerializer
+
+# ... (similar viewsets for other models)
